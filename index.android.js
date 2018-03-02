@@ -1,4 +1,4 @@
 /* eslint-disable no-unused-vars */
-import registerApp from './src/app/app';
+import registerApp from './src/app/App';
 
 registerApp();
