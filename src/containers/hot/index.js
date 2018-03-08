@@ -39,8 +39,6 @@ const mapStateToProps = (state) => {
         items: nowObjects});
     const nextItem = Object.assign({}, nextState, {});
 
-    console.log('nowItem: ', nowItem);
-
     return {
         nowItem,
         nextItem
@@ -54,25 +52,36 @@ const shouldCallNowRefresh = (state) => {
 const shouldCallNowLoad = (state, payload) => {
     const item = state.frontend['hot']['now'];
     if(item.isLoading || item.isFetching) {
+        console.log('shouldCallNowLoad intercept, because is loading or fetching');
         return false;
     }
-    if(item.start >= item.total) {
+    if(payload.start >= item.total) {
+        console.log(`shouldCallNowLoad intercept, because start=${payload.start}: >= total=${item.total}`);
         return false;
     }
     //props.items.length 不太稳定，上次是20,这次可能是17, 这种情况直接return
-    return payload.start > item.start;
+    if(payload.start <= item.start) {
+        console.log(`shouldCallNowLoad intercept, because payload.start=${payload.start}: <= item.start=${item.start}`);
+        return false;
+    }
+
+    return true;
 };
 
-const mapDispatchToProps = (dispatch, ownProps) => {
+
+const handleNowLoadedInternal = () => {
+    return (dispatch, getState) => {
+        const state = getState();
+        const {now: nowState} = state.frontend['hot'];
+        dispatch(loadNowMovies(shouldCallNowLoad, nowState.count, true));
+    };
+};
+
+const mapDispatchToProps = (dispatch) => {
     //fetch data from server
     return {
         handleNowLoaded: () => {
-            let start = 0;
-            if(ownProps.items) {
-                start =ownProps.items.length;
-            }
-            console.log('onwProps: ', ownProps);
-            dispatch(loadNowMovies(shouldCallNowLoad, start, true))
+            dispatch(handleNowLoadedInternal());
         },
         handleNowRefresh: () => {
             dispatch(loadNowMovies(shouldCallNowRefresh, 0, false))

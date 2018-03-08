@@ -21,10 +21,12 @@ export default function callAPIMiddleware({dispatch, getState}) {
             types.length !== 3 ||
             !types.every(type => typeof type === 'string')
         ) {
+            console.error('Expected an array of three string types.');
             throw new Error('Expected an array of three string types.')
         }
 
         if (typeof callAPI !== 'function') {
+            console.error('Expected callAPI to be a function.');
             throw new Error('Expected callAPI to be a function.')
         }
 

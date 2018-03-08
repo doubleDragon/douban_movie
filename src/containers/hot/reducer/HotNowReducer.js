@@ -8,6 +8,7 @@ const init_state = {
 };
 
 const reducer = (state = init_state, action) => {
+
     const {type, append} = action;
     const key = append ? 'isLoading' : 'isFetching';
     switch (type) {
@@ -15,10 +16,17 @@ const reducer = (state = init_state, action) => {
             return Object.assign({}, state, {[key]: true});
         case TYPE_NOW_SUCCESS:
             //存储subjects的id列表
-            const ids = action.response.result.subjects ? action.response.result.subjects : [];
-            const {start = 0, total = 0} = action.response.result;
+            let {start = 0, total = 0, count = 0} = action.response.result;
+
+            let newIds = action.response.result.subjects ? action.response.result.subjects : [];
+            let ids = newIds;
+            if(append) {
+                ids = [...state.ids, ...newIds];
+                count = state.count + newIds.length;
+            }
+
             //是否需要排序?
-            return Object.assign({}, state, {[key]: false, ids, start, total});
+            return Object.assign({}, state, {[key]: false, ids, start, total, count});
 
         case TYPE_NOW_FAILURE:
             return Object.assign({}, state, {[key]: false, error: action.error});
