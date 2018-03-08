@@ -5,7 +5,8 @@ import { Navigation } from 'react-native-navigation';
 import loadTabIcons from '../util/IconUtils';
 
 import { registerScreens } from './screens';
-import store from './store';
+// import store from './store';
+import store from '../redux/store';
 
 registerScreens(store, Provider);
 

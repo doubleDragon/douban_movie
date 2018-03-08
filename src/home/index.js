@@ -4,7 +4,7 @@ import HomeActions from './HomeActions';
 
 const mapStateToProps = (state) => {
     return {
-        value: state.home.title
+        value: 'home com'
     }
 };
 
