@@ -3,7 +3,6 @@ import { Navigation } from 'react-native-navigation';
 
 import Home from '../home';
 import Test from '../test';
-// import Hot from '../components/hot';
 import Hot from '../containers/hot';
 
 export function registerScreens(store, Provider) {

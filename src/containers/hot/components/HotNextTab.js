@@ -2,6 +2,8 @@ import React from 'react';
 import {View, Text, FlatList, StyleSheet} from 'react-native';
 import {PX1} from "../../../util/PixUtils";
 
+import PropTypes from 'prop-types';
+
 const styles = StyleSheet.create({
     container: {
         flexDirection: 'row',
@@ -16,6 +18,7 @@ const styles = StyleSheet.create({
     },
 });
 
+
 const TabMonth = (props) => {
 
     let style = {
@@ -28,7 +31,7 @@ const TabMonth = (props) => {
     }
 
     return (
-        <Text style={style}>{props.item.name}</Text>
+        <Text style={style} onPress={() => props.clickMonth(props.item)}>{props.item.name}</Text>
     )
 };
 
@@ -43,32 +46,24 @@ const TabOther = (props) => {
     }
 
     return (
-        <Text style={style}>{props.item.name}</Text>
+        <Text style={style} onPress={() => props.clickOther(props.item)}>{props.item.name}</Text>
     )
 };
 
-const monthData = [
-    {
-        name: '全部',
-        selected: true
-    },
-    {
-        name: '3月',
-        selected: false
-    },
-    {
-        name: '4月',
-        selected: false
-    },
-    {
-        name: '5月',
-        selected: false
-    }
-];
-
 export default class Tab extends React.Component {
 
+    constructor(props) {
+        super(props);
+    }
+
     render() {
+
+        const {monthData, otherData} = this.props;
+
+        const otherEle = otherData.map((item,index) =>
+            <TabOther key={index} item={item} clickOther={this.props.clickOther}/>
+        );
+
         return (
             <View>
 
@@ -77,13 +72,13 @@ export default class Tab extends React.Component {
                         data={monthData}
                         horizontal={true}
                         keyExtractor={(item, index) => index.toString()}
-                        renderItem={({item}) => <TabMonth item={item}/>}
+                        renderItem={({item}) => <TabMonth item={item} clickMonth={this.props.clickMonth}/>}
                     />
 
                     <View style={{flexDirection: 'row'}}>
                         <View style={{width: 1, backgroundColor: '#cccccc'}}/>
-                        <TabOther item={{name:'时间', selected: true}}/>
-                        <TabOther item={{name:'热度', selected: false}}/>
+
+                        {otherEle}
                     </View>
                 </View>
 
@@ -91,3 +86,11 @@ export default class Tab extends React.Component {
         )
     }
 }
+
+TabOther.propTypes = {
+    clickOther: PropTypes.func.isRequired,
+};
+
+TabMonth.propTypes = {
+    clickMonth: PropTypes.func.isRequired,
+};

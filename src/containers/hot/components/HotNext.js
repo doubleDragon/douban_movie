@@ -3,7 +3,7 @@ import React from 'react';
 import {View, Text, FlatList, StyleSheet} from 'react-native';
 import {PX1} from "../../../util/PixUtils";
 
-import Tab from './HotNextTab';
+import TabContainer from './HotNextTabContainer';
 
 
 const styles = StyleSheet.create({
@@ -26,7 +26,7 @@ export default class HotNext extends React.Component {
     render() {
         return (
             <View>
-                <Tab />
+                <TabContainer />
 
             </View>
         )
