@@ -59,6 +59,7 @@ export default class Hot extends React.Component {
 
     componentDidMount() {
         this.props.handleNowRefresh();
+        this.props.handleNextRefresh();
     }
 
     render() {
@@ -89,7 +90,12 @@ export default class Hot extends React.Component {
                             isFetching={this.props.nowItem.isFetching}
                             items={this.props.nowItem.items}
                             error={this.props.nowItem.error}/>
-                    <HotNext tabLabel='即将上映'/>
+                    <HotNext tabLabel='即将上映'
+                             onEndReached={this.props.handleNextLoaded}
+                             onRefresh={this.props.handleNextRefresh}
+                             isFetching={this.props.nextItem.isFetching}
+                             items={this.props.nextItem.items}
+                             error={this.props.nextItem.error}/>
                 </ScrollableTabView>
 
             </View>
@@ -105,5 +111,12 @@ Hot.propTypes = {
         items:  PropTypes.array,
         error:  PropTypes.string,
     }),
-    nextItem: PropTypes.object.isRequired,
+
+    handleNextLoaded: PropTypes.func.isRequired,
+    handleNextRefresh: PropTypes.func.isRequired,
+    nextItem: PropTypes.shape({
+        isFetching: PropTypes.bool.isRequired,
+        items:  PropTypes.array,
+        error:  PropTypes.string,
+    }),
 };

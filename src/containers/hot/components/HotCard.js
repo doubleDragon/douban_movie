@@ -6,8 +6,6 @@ import {PX1} from '../../../util/PixUtils';
 import Rating from 'react-native-easy-rating';
 import PropTypes from 'prop-types';
 
-import {isEmpty} from "../../../util/ToolUtils";
-
 const styles = StyleSheet.create({
     container: {
         flexDirection: 'row',
@@ -69,7 +67,7 @@ const styles = StyleSheet.create({
     },
 });
 
-export default class HotNowItem extends React.Component {
+export default class HotCard extends React.Component {
 
     render() {
 
@@ -79,22 +77,6 @@ export default class HotNowItem extends React.Component {
         if(casts) {
             castsElement = (<Text style={styles.movieLabel}>主演 : {casts}</Text>);
         }
-
-        // let collectCount = item['collect_count'];
-        // if(collectCount > 10000) {
-        //     collectCount = (collectCount / 10000).toFixed(1) + '万';
-        // }
-
-        // const rating = item['rating'];
-        //
-        // const average = rating['average'];
-        // const stars = parseInt(rating['stars']) / 10;
-        // const starNo = stars.toFixed(1);
-        //
-        // const hasRating = (average > 0 && stars > 0);
-        // const ratingDes = hasRating ? average : '暂无评分';
-        //
-        // const ratingLabelStyle = hasRating ? styles.movieRating : styles.movieRatingEmpty;
 
         let hasRating = stars !== 0;
         const ratingLabelStyle =  hasRating ? styles.movieRating : styles.movieRatingEmpty;
@@ -139,7 +121,7 @@ export default class HotNowItem extends React.Component {
     }
 }
 
-HotNowItem.propTypes = {
+HotCard.propTypes = {
     title: PropTypes.string.isRequired,
     image: PropTypes.string.isRequired,
     director: PropTypes.string.isRequired,

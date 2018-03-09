@@ -40,9 +40,6 @@ export default class TabContainer extends React.Component {
     }
 
     handleClickMonth = (item) => {
-        console.log('click month :' , item);
-
-
         let newMonthData = this.state.monthData.map(i => {
             return Object.assign({}, i, {selected: (i === item)})
         });
@@ -51,8 +48,6 @@ export default class TabContainer extends React.Component {
 
     };
     handleClickOther = (item) => {
-        console.log('click other');
-
         let newOtherData = this.state.otherData.map(i => {
             return Object.assign({}, i, {selected: (i === item)})
         });

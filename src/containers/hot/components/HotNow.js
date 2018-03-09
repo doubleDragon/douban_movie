@@ -3,16 +3,11 @@ import PropTypes from 'prop-types';
 
 import {View, Text, FlatList, StyleSheet} from 'react-native';
 
-import Item from './HotNotItem';
+import HotCard from './HotCard';
 
 const styles = StyleSheet.create({
     container: {
         // backgroundColor: 'white'
-    },
-    item: {
-        padding: 10,
-        fontSize: 18,
-        height: 44,
     },
 });
 
@@ -35,7 +30,7 @@ export default class HotNow extends React.Component {
                 getItemLayout={(data, index) => ({length: 143, offset: 143 * index, index})}
                 keyExtractor={(item, index) => index.toString()}
                 renderItem={({item}) => (
-                    <Item title={item.title}
+                    <HotCard title={item.title}
                           image={item.image}
                           director={item.director}
                           casts={item.casts}
@@ -50,7 +45,6 @@ export default class HotNow extends React.Component {
                 {content}
             </View>
         )
-
     }
 }
 
