@@ -3,6 +3,7 @@ import {View, Text, Image, StyleSheet} from 'react-native';
 import ScrollableTabView, {ScrollableTabBar,} from 'react-native-scrollable-tab-view';
 import PropTypes from 'prop-types';
 
+import HotSearch from './components/HotSearch';
 import HotNow from './components/HotNow';
 import HotNext from './components/HotNext';
 
@@ -34,21 +35,6 @@ const styles = StyleSheet.create({
         height: 15,
         marginLeft: 5
     },
-    searchBox: {
-        flexDirection: 'row',
-        flex: 1,
-        height: 35,
-        backgroundColor: '#f5f5f5',
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginLeft: 8,
-        borderRadius: 5
-    },
-    searchText: {
-        fontSize: 14,
-        fontWeight: '500',
-        color: '#9b9b9b'
-    },
     pageStyle: {
         alignItems: 'center',
         padding: 20,
@@ -69,10 +55,7 @@ export default class Hot extends React.Component {
                     <Text style={styles.location}>北京</Text>
                     <Image source={require('../../img/ic_arrow_down.png')} style={styles.arrow}/>
 
-                    <View style={styles.searchBox}>
-                        <Image source={require('../../img/ic_query_new.png')}/>
-                        <Text style={styles.searchText}>电影 / 电视剧 / 影人</Text>
-                    </View>
+                    <HotSearch />
                 </View>
 
                 <ScrollableTabView

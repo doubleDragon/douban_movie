@@ -23,7 +23,7 @@ registerScreens(store, Provider);
 
 
 const tabNavigatorStyle = {
-    statusBarColor: 'transparent',
+    statusBarColor: 'black',
     statusBarTextColorScheme: 'light',
 
     navBarHidden: true
@@ -40,7 +40,7 @@ const startApp = (icons) => {
             },
             {
                 label: '找片',
-                screen: 'test',
+                screen: 'found',
                 icon: icons[1],
                 navigatorStyle: tabNavigatorStyle
             },
