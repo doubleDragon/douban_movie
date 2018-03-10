@@ -4,6 +4,7 @@ import {View, Text, Image, StyleSheet} from 'react-native';
 import {PX1} from '../../../util/PixUtils';
 
 import FoundNavContainer from "./FoundNavContainer";
+import FoundPopContainer from "./FoundPopContainer";
 
 const styles = StyleSheet.create({
 
@@ -34,7 +35,7 @@ export default class FoundMovie extends React.Component {
             <View>
 
                 <FoundNavContainer items={navItems}/>
-
+                <FoundPopContainer />
             </View>
         )
     }
