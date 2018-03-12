@@ -9,7 +9,6 @@ import PropTypes from 'prop-types';
 
 export default class FoundNavContainer extends React.Component {
 
-
     render() {
 
         const {items} = this.props;
