@@ -1,6 +1,8 @@
 import React from 'react';
 import {View, Text, Image, StyleSheet} from 'react-native';
 
+import PropTypes from 'prop-types';
+
 
 const styles = StyleSheet.create({
     container: {
@@ -15,15 +17,24 @@ const styles = StyleSheet.create({
 
 export default class FoundPopHeader extends React.Component {
     render() {
+
+        const {title, count} = this.props;
+
         return (
             <View style={styles.container}>
-                <Text style={styles.left}>豆瓣热门</Text>
+                <Text style={styles.left}>{title}</Text>
 
                 <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                    <Text style={styles.right}>全部99+</Text>
+                    <Text style={styles.right}>{count}</Text>
                     <Image source={require('../../../img/ic_arrow_right.png')} style={styles.image}/>
                 </View>
             </View>
         )
     }
 }
+
+
+FoundPopHeader.propTypes = {
+    title: PropTypes.string.isRequired,
+    count: PropTypes.string.isRequired,
+};

@@ -121,7 +121,7 @@ export default class FoundMovie extends React.Component {
     _renderSectionHeader = (item) => {
         switch (item.section.key) {
             case 'pop':
-                return <FoundPopHeader/>;
+                return <FoundPopHeader title={'豆瓣热门'} count={'全部99+'}/>;
             case 'top':
                 return <FoundTopHeader/>;
             case 'nav':

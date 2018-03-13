@@ -1,8 +1,7 @@
 import React from 'react';
 import {View, Text, Image, StyleSheet} from 'react-native';
-import ScrollableTabView, {ScrollableTabBar,} from 'react-native-scrollable-tab-view';
+import ScrollableTabView, {DefaultTabBar,} from 'react-native-scrollable-tab-view';
 import Search from "./components/FounSearch";
-import {PX1} from "../../util/PixUtils";
 
 import FoundMovie from './components/FoundMovie';
 import FoundTv from './components/FoundTv';
@@ -26,8 +25,8 @@ export default class FoundContainer extends React.Component {
                     initialPage={0}
                     tabBarInactiveTextColor='#9b9b9b'
                     tabBarActiveTextColor='#494949'
-                    tabBarUnderlineStyle={{height: PX1, backgroundColor: '#494949'}}
-                    renderTabBar={() => <ScrollableTabBar/>}
+                    tabBarUnderlineStyle={{height: 1, backgroundColor: '#494949'}}
+                    renderTabBar={() => <DefaultTabBar/>}
                 >
 
                     <FoundMovie tabLabel='电影'

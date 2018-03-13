@@ -1,14 +1,11 @@
 import React from 'react';
 import {View, Text, Image, StyleSheet} from 'react-native';
-import ScrollableTabView, {ScrollableTabBar,} from 'react-native-scrollable-tab-view';
+import ScrollableTabView, {DefaultTabBar,} from 'react-native-scrollable-tab-view';
 import PropTypes from 'prop-types';
 
 import HotSearch from './components/HotSearch';
 import HotNow from './components/HotNow';
 import HotNext from './components/HotNext';
-
-import {PX1} from '../../util/PixUtils';
-
 
 const styles = StyleSheet.create({
     root: {
@@ -63,8 +60,8 @@ export default class Hot extends React.Component {
                     initialPage={0}
                     tabBarInactiveTextColor='#9b9b9b'
                     tabBarActiveTextColor='#494949'
-                    tabBarUnderlineStyle={{height: PX1, backgroundColor: '#494949'}}
-                    renderTabBar={() => <ScrollableTabBar/>}
+                    tabBarUnderlineStyle={{height: 1, backgroundColor: '#494949'}}
+                    renderTabBar={() => <DefaultTabBar/>}
                 >
 
                     <HotNow tabLabel='正在热映'

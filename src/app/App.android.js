@@ -46,7 +46,7 @@ const startApp = (icons) => {
             },
             {
                 label: '我的',
-                screen: 'home',
+                screen: 'self',
                 icon: icons[2],
                 navigatorStyle: tabNavigatorStyle
             }
