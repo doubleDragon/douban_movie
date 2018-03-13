@@ -23,7 +23,7 @@ registerScreens(store, Provider);
 
 
 const tabNavigatorStyle = {
-    statusBarColor: 'black',
+    statusBarColor: 'block',
     statusBarTextColorScheme: 'light',
 
     navBarHidden: true

@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, SectionList, FlatList} from 'react-native';
+import {View, SectionList, FlatList} from 'react-native';
 
 import FoundNavContainer from "./FoundNavContainer";
 import FoundPopHeader from "./FoundPopHeader";
