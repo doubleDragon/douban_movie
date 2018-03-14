@@ -1,16 +1,27 @@
 import React from 'react';
 import {View, Text} from 'react-native';
 import SelfHeader from "./components/SelfHeader";
-import {PX1} from "../../util/PixUtils";
-import ScrollableTabView, {ScrollableTabBar, DefaultTabBar} from "react-native-scrollable-tab-view";
+import ScrollableTabView, {DefaultTabBar} from "react-native-scrollable-tab-view";
 
 
 
 export default class SelfComponent extends React.Component {
+
+    handleLogin = () => {
+        console.log('login click');
+
+        this.props.navigator.showModal({
+            screen: 'login',
+            navigatorStyle: {
+                navBarHidden: true
+            },
+        });
+    };
+
     render() {
         return (
             <View style={{flex: 1}}>
-                <SelfHeader />
+                <SelfHeader handleLogin={this.handleLogin}/>
 
                 <ScrollableTabView
                     style={{flex: 1}}

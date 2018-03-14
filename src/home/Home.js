@@ -12,7 +12,7 @@ export default class Home extends React.Component {
     handleTestClick() {
         this.props.navigator.push({
             screen: 'test',
-            title: 'Pushed Test Screen'
+            title: 'Pushed Test Screen',
         });
     }
 

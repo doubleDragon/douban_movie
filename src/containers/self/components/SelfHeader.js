@@ -1,6 +1,6 @@
 import React from 'react';
-import {View, Text, Image, StyleSheet} from 'react-native';
-
+import {View, Text, Image, TouchableOpacity, StyleSheet} from 'react-native';
+import PropTypes from 'prop-types';
 
 const styles = StyleSheet.create({
     container: {
@@ -35,18 +35,24 @@ const styles = StyleSheet.create({
 });
 
 export default class SelfHeader extends React.Component {
+
     render() {
         return (
             <View style={styles.container}>
 
                 <Image source={require('../../../img/ic_setting.png')} style={styles.setting}/>
 
-                <View style={styles.avatarBox}>
+                <TouchableOpacity style={styles.avatarBox} onPress={this.props.handleLogin}>
                     <Image source={require('../../../img/ic_avatar_default.png')} style={styles.avatar}/>
                     <Text style={styles.text}>请登录</Text>
-                </View>
+                </TouchableOpacity>
 
             </View>
         )
     }
 }
+
+
+SelfHeader.propTypes = {
+    handleLogin: PropTypes.func.isRequired
+};
