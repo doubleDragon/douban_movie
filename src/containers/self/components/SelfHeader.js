@@ -44,7 +44,7 @@ export default class SelfHeader extends React.Component {
 
                 <TouchableOpacity style={styles.avatarBox} onPress={this.props.handleLogin}>
                     <Image source={require('../../../img/ic_avatar_default.png')} style={styles.avatar}/>
-                    <Text style={styles.text}>请登录</Text>
+                    <Text style={styles.text}>{this.props.name}</Text>
                 </TouchableOpacity>
 
             </View>
@@ -54,5 +54,6 @@ export default class SelfHeader extends React.Component {
 
 
 SelfHeader.propTypes = {
-    handleLogin: PropTypes.func.isRequired
+    handleLogin: PropTypes.func.isRequired,
+    name: PropTypes.string.isRequired
 };
