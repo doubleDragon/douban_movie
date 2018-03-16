@@ -9,10 +9,12 @@ const styles = StyleSheet.create({
         backgroundColor: '#5dc76d',
         justifyContent: 'center'
     },
-    setting: {
+    settingBox: {
         position: 'absolute',
         right: 15,
         top: 15,
+    },
+    setting: {
         width: 20,
         height: 20
     },
@@ -40,7 +42,9 @@ export default class SelfHeader extends React.Component {
         return (
             <View style={styles.container}>
 
-                <Image source={require('../../../img/ic_setting.png')} style={styles.setting}/>
+                <TouchableOpacity onPress={this.props.handleSetting} style={styles.settingBox}>
+                    <Image source={require('../../../img/ic_setting.png')} style={styles.setting}/>
+                </TouchableOpacity>
 
                 <TouchableOpacity style={styles.avatarBox} onPress={this.props.handleLogin}>
                     <Image source={require('../../../img/ic_avatar_default.png')} style={styles.avatar}/>
@@ -55,5 +59,6 @@ export default class SelfHeader extends React.Component {
 
 SelfHeader.propTypes = {
     handleLogin: PropTypes.func.isRequired,
+    handleSetting: PropTypes.func.isRequired,
     name: PropTypes.string.isRequired
 };

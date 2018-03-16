@@ -19,10 +19,17 @@ export default class SelfComponent extends React.Component {
         });
     };
 
+    handleSetting = () => {
+        this.props.navigator.showModal({
+            screen: 'setting',
+            title: '设置'
+        });
+    };
+
     render() {
         return (
             <View style={{flex: 1, backgroundColor: 'white'}}>
-                <SelfHeader handleLogin={this.handleLogin} name={this.props.name}/>
+                <SelfHeader handleLogin={this.handleLogin} handleSetting={this.handleSetting} name={this.props.name}/>
 
                 <ScrollableTabView
                     style={{flex: 1}}
